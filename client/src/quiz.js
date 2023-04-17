@@ -20,10 +20,10 @@ function Quiz() {
     }, 2000)
   }, [])
 
-  // Fetch the quiz data from localhost:3000/quiz/:quizId
+  // Fetch the quiz data from /api/:quizId
   useEffect(() => {
     const fetchQuiz = async () => {
-        const response = await axios.get(`http://localhost:3000/quiz/${quizId}`)
+        const response = await axios.get(`/api/${quizId}`)
         console.log(response.data)
         setQuizData(response.data)
     }

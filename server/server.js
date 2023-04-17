@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const yaml = require('yaml')
 const { generateQuiz } = require('./gpt');
 const quizzes = require('./quiz-db');
+const path = require('path');
 // CORS
 const cors = require('cors');
 
@@ -33,6 +34,12 @@ app.get('/quiz/:quizId', (req, res) => {
 
     res.status(200).send(quiz)
 })
+
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
