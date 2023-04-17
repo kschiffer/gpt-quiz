@@ -6,11 +6,10 @@ import OptionsInput from './components/options-input';
 import axios from 'axios';
 
 function App() {
-  const [step, setStep] = useState('INITIAL');
   const [topic, setTopic] = useState(null);
   const [difficulty, setDifficulty] = useState(null);
   const [quizId, setQuizId] = useState(null);
-  
+
   const difficultyOptions = [
     { label: 'Easy', value: 'easy' },
     { label: 'Normal', value: 'normal' },
@@ -29,7 +28,7 @@ function App() {
     }
 
     fetchQuiz()
-  }, [difficulty])
+  }, [difficulty, topic])
 
   const onStartQuiz = useCallback(() => {
     window.location = `/quiz/${quizId}`

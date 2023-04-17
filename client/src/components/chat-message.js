@@ -1,4 +1,4 @@
-import React, { useEffect, setState } from 'react';
+import React from 'react';
 import './chat-message.css';
 
 function ChatMessage({ message, icon, withLoading, fullSize }) {

@@ -11,15 +11,14 @@ function Quiz() {
   const [quizData, setQuizData] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
-  console.log(quizData)
   const question = quizData ? quizData.quiz[questionIndex] : null;
-  
+
   const handleAnswerSelect = useCallback((answer) => {
     setAnswers(answers => [...answers, answer.value])
     setTimeout(() => {
         setQuestionIndex(questionIndex => questionIndex + 1)
     }, 2000)
-  })
+  }, [])
 
   // Fetch the quiz data from localhost:3000/quiz/:quizId
   useEffect(() => {
